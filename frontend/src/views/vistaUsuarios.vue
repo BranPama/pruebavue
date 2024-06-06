@@ -66,6 +66,9 @@ export default defineComponent({
                             </v-list>
                         </v-col>    
                     </v-row>
+                    <v-col class="text-center" cols="12" xs="12" sm="12" md="12">
+                        <p>Autor : Bran Andres Pama</p>
+                    </v-col>
                 </v-row>
             </v-container>
         </v-main>

@@ -62,27 +62,26 @@ async function crearCliente(req = request, res = response) {
 
   async function desactivarCliente(req = request, res = response) {
     try {
-      const { id_cliente } = req.body;
+      const { nit } = req.body;
   
       await pool.query(
         `
-        UPDATE 
+        update
         public.clientes
-        SET 
-        estado=false
-        where
-        id_cliente=$1
+        set
+          estado = false
+        where 
+        nit in ($1)
         `,
-        [id_cliente]
+        [nit]
       );
   
       res.status(201).json({
         msg: "Se ha desactivado el cliente en el sistema.",
       });
     } catch (error) {
-      console.error(`Error en controller desactivarPuntoDeVenta ${error}`);
+      console.error(`Error en controller desactivarCliente ${error}`);
       res.status(400).json({
-
       });
     }
   }

@@ -58,7 +58,7 @@ export default defineComponent({
                 key: "estado"
             },
             {
-                title: "Eliminar",
+                title: "Opcion",
                 align: "center",
                 key: "eliminar"
             },

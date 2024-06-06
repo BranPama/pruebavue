@@ -18,11 +18,19 @@
   import { defineComponent, ref, onMounted, computed } from "vue";
   import axios from "axios";
   export default defineComponent({
+    name: "desactivarCliente",
+    emits: ["click"],
     components: {
-
+    },
+    props: {
+      nit: {
+        type: Number,
+        require: true,
+      },
     },
 
-    setup() {
+    setup(props, { emit }) {
+      onMounted(() => {});
   
 
       const enviarActualizacionVista = () => {
@@ -35,20 +43,21 @@
       // Funciones
       const desactivarCliente = async () => {
         estadoBotonActualizar.value = true;
-        axios
+          axios
           .put(
-            `/http://localhost:8500/desactivar_cliente`,
+            `http://localhost:8500/desactivar_cliente`,
             {
-              id_cliente: props.id_cliente,
+              nit: props.nit,
             },
+
+            
           )
           .then(() => {
-            console.log(res);
             enviarActualizacionVista();
-            
+            estadoBotonActualizar.value = false;
           })
           .catch((error) => {
-            console.error(error);
+          console.error(error);
           });
       };
   

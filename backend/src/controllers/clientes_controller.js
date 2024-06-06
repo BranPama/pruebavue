@@ -60,18 +60,18 @@ async function crearCliente(req = request, res = response) {
     }
   }
 
-
-async function eliminarCliente(req = request, res = response) {
+  async function desactivarCliente(req = request, res = response) {
     try {
       const { id_cliente } = req.body;
   
       await pool.query(
         `
-        DELETE 
-        FROM 
+        UPDATE 
         public.clientes
-        WHERE 
-        id_cliente=nextval('clientes_id_cliente_seq'::regclass);
+        SET 
+        estado=false
+        where
+        id_cliente=$1
         `,
         [id_cliente]
       );
@@ -80,15 +80,16 @@ async function eliminarCliente(req = request, res = response) {
         msg: "Se ha desactivado el cliente en el sistema.",
       });
     } catch (error) {
-      console.error(`Error en controller desactivarCliente ${error}`);
+      console.error(`Error en controller desactivarPuntoDeVenta ${error}`);
       res.status(400).json({
+
       });
     }
-}
+  }
 
 
 module.exports = {
     consultarClientes,
     crearCliente,
-    eliminarCliente,
+    desactivarCliente,
 }

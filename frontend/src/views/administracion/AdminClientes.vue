@@ -123,6 +123,26 @@ export default defineComponent({
                     density="compact"
                     color="#121a21"
                     >
+                    <template v-slot:[`item.estado`]="{ item }">
+                      <div v-if="item.estado">
+                        <v-chip
+                          class="ma-2"
+                          color="#3a0047"
+                          prepend-icon="mdi-account-multiple-check-outline"
+                        >
+                          ACTIVO
+                        </v-chip>
+                      </div>
+                      <div v-else>
+                        <v-chip
+                          class="ma-2"
+                          color="#F44336"
+                          prepend-icon="mdi-account-off"
+                        >
+                          INACTIVO
+                        </v-chip>
+                      </div>
+                    </template>
                     <template v-slot:[`item.eliminar`]="{ item }">
                         <div class="d-flex justify-center">
                           <EliminarCliente @click="clientesRegistrados" :nit="item.nit"  />

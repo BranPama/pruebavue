@@ -154,13 +154,11 @@
         <script>
   import { defineComponent, ref, onMounted, computed, defineProps } from "vue";
   import axios from "axios";
+  
   export default defineComponent({
     components: {},
-    emits: ["click"],
-    setup(props, { emit }) {
-      onMounted(() => {
-        datosFormularioCliente();
-      });
+    setup() {
+      
   
       //Campos formulario
       const nit = ref("");
@@ -280,6 +278,7 @@
         estadoBotonGuardar,
         cargarVista,
         crearCliente,
+        datosFormularioCliente,
       };
     },
   });

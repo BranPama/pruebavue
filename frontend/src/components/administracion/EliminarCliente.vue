@@ -21,13 +21,8 @@
     components: {
 
     },
-    props: {
-      nit: {
-        type: Number,
-      },
-    },
-    setup(props, { emit }) {
-      onMounted(() => {});
+
+    setup() {
   
 
       const enviarActualizacionVista = () => {
@@ -39,22 +34,23 @@
   
       // Funciones
       const desactivarCliente = async () => {
-        try {
-            estadoBotonActualizar.value = true;
-            await 
-            axios
-            .delete(`http://localhost:8500/eliminar_cliente`,
-                {
-                    data: { id_cliente: props.id_cliente } // Pasar el id_cliente en lugar del nit
-                }
-            );
-        enviarActualizacionVista();
-    } catch (error) {
-        console.error("Error al desactivar cliente:", error);
-        // Manejar el error apropiadamente, ya sea mostrando un mensaje de error o realizando alguna otra acción.
-    }
-};
-
+        estadoBotonActualizar.value = true;
+        axios
+          .put(
+            `/http://localhost:8500/desactivar_cliente`,
+            {
+              id_cliente: props.id_cliente,
+            },
+          )
+          .then(() => {
+            console.log(res);
+            enviarActualizacionVista();
+            
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
   
       return {
         desactivarCliente,

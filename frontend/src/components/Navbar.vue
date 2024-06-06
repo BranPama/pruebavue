@@ -25,12 +25,12 @@ export default defineComponent({
 </script>
 
 <template>
-  <v-app-bar class="text-green" title="Praticando con VUE3">
+  <v-app-bar class="text-green" color="#121a21" title="Praticando con VUE3">
     <template v-slot:prepend>
-      <v-app-bar-nav-icon class="text-black" @click="gestionMenu"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="text-white" @click="gestionMenu"></v-app-bar-nav-icon>
     </template>
     <template v-slot:append>
-      <v-app-bar-nav-icon class="text-black" icon="mdi-home" to="/inicio"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="text-white" icon="mdi-home" to="/inicio"></v-app-bar-nav-icon>
     </template>
   </v-app-bar>
   <NavigationDrawer v-model="botonNavigation"/>

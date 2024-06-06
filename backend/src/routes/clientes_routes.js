@@ -4,13 +4,13 @@ const router = express.Router();
 const {
     consultarClientes,
     crearCliente,
-    eliminarCliente,
+    desactivarCliente,
 } = require("../controllers/clientes_controller.js");
 
 
 router.get("/clientes_registrados", consultarClientes);
 router.post("/registrar_cliente", crearCliente);
-router.delete("/eliminar_cliente" , eliminarCliente); 
+router.put("/desactivar_cliente" , desactivarCliente); 
 
 
 module.exports = router;

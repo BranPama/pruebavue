@@ -1,5 +1,7 @@
 <script>
 import { defineComponent, ref, computed } from 'vue'
+import { useRouter } from 'vue-router';  // Importa useRouter
+import axios from 'axios';
 
 import Navbar from "../../src/components/Navbar.vue";
 
@@ -9,10 +11,36 @@ export default defineComponent({
     },
     setup() {
 
+    const router = useRouter();  // Usa useRouter para obtener acceso a $router
 
-        return {
+    const correo = ref('');
+    const contraseña = ref('');
+    const error = ref(null);
 
-        };
+    const loginUsuario = async () => {
+      try {
+        const response = await axios.post('http://localhost:8500/login_usuario', {
+          correo: correo.value,
+          contraseña: contraseña.value
+        });
+        
+        const token = response.data.token;
+        router.push('/inicio');
+        // Almacena el token en el almacenamiento local o en la sesión del navegador
+        localStorage.setItem('token', token);
+        console.log("Inicio de sesión exitoso");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    return {
+        correo,
+        contraseña,
+        error,
+        loginUsuario,
+    };
+    
     },
 });
 </script>
@@ -30,13 +58,18 @@ export default defineComponent({
                                     class="text-black"
                                     >Es un placer tenerte de vuelta
                                 </h2>
+                                <h4 
+                                    class="text-black"
+                                    >
+                                    Inicia Sesion
+                                </h4>
                             </div>
-                            <v-form fast-fail @submit.prevent type="GET">
+                            <v-form @submit.prevent="loginUsuario">
                                 <v-text-field 
                                     class="mt-10"
                                     variant="outlined"
                                     density="compact"
-                                    v-model="firstName" 
+                                    v-model="correo" 
                                     :rules="firstNameRules" 
                                     label="Correo"
                                     prepend-inner-icon="mdi-email">
@@ -45,7 +78,7 @@ export default defineComponent({
                                 <v-text-field 
                                     variant="outlined"
                                     density="compact"
-                                    v-model="lastName" 
+                                    v-model="contraseña" 
                                     :rules="lastNameRules" 
                                     label="Contraseña"
                                     type="password"
@@ -57,7 +90,6 @@ export default defineComponent({
                                     rounded="xl"
                                     type="submit" 
                                     block
-                                    href="/inicio"
                                     >
                                     Ingresar
                                 </v-btn>
@@ -69,7 +101,7 @@ export default defineComponent({
                                     rounded="xl"
                                     type="submit" 
                                     block
-                                    
+                                    to="/registro"
                                     >
                                     Registrarme
                                 </v-btn>

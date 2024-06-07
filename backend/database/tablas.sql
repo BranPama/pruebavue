@@ -9,3 +9,13 @@ CREATE TABLE public.clientes (
 	id_cliente serial4 NOT NULL,
 	CONSTRAINT clientes_pk PRIMARY KEY (id_cliente)
 );
+
+CREATE TABLE public.usuarios (
+	id_usuario serial4 NOT NULL,
+	nombre text NOT NULL,
+	apellido text NOT NULL,
+	telefono text NOT NULL,
+	correo text NOT NULL,
+	contraseña text NOT NULL,
+	CONSTRAINT usuarios_pkey PRIMARY KEY (id_usuario)
+);

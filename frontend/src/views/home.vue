@@ -70,7 +70,6 @@ export default defineComponent({
                                     variant="outlined"
                                     density="compact"
                                     v-model="correo" 
-                                    :rules="firstNameRules" 
                                     label="Correo"
                                     prepend-inner-icon="mdi-email">
                                 </v-text-field>
@@ -79,7 +78,6 @@ export default defineComponent({
                                     variant="outlined"
                                     density="compact"
                                     v-model="contraseña" 
-                                    :rules="lastNameRules" 
                                     label="Contraseña"
                                     type="password"
                                     prepend-inner-icon="mdi-lock">

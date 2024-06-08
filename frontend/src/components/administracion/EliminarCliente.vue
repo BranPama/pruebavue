@@ -24,8 +24,8 @@
     },
     props: {
       nit: {
-        type: Text,
-        require: true,
+        type: String,
+        required: true,
       },
     },
 

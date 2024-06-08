@@ -20,7 +20,7 @@ export default defineComponent({
             <h2>Administracion</h2>
             <v-divider class="ma-2"></v-divider>
             <v-list-item 
-                active-color="green" 
+                color="green" 
                 class="text-black" 
                 to="/clientes"
                 >

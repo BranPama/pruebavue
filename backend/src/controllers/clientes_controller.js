@@ -24,7 +24,7 @@ async function consultarClientes(req, res, query) {
         console.error(`Error en controller consultarClientes ${error}`);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
-}
+};
 
 async function crearCliente(req = request, res = response) {
     try {
@@ -58,7 +58,7 @@ async function crearCliente(req = request, res = response) {
     } catch (error) {
       console.error(`Error en controller crearCliente ${error}`);
     }
-  }
+  };
 
   async function desactivarCliente(req = request, res = response) {
     try {
@@ -84,7 +84,7 @@ async function crearCliente(req = request, res = response) {
       res.status(400).json({
       });
     }
-  }
+  };
 
 
 module.exports = {

@@ -15,7 +15,6 @@ export default defineComponent({
 
     const correo = ref('');
     const contraseña = ref('');
-    const error = ref(null);
 
     const loginUsuario = async () => {
       try {
@@ -37,7 +36,6 @@ export default defineComponent({
     return {
         correo,
         contraseña,
-        error,
         loginUsuario,
     };
     

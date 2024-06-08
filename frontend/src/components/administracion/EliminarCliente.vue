@@ -18,19 +18,18 @@
   import { defineComponent, ref, onMounted, computed } from "vue";
   import axios from "axios";
   export default defineComponent({
-    name: "desactivarCliente",
+    name: "EliminarCliente",
     emits: ["click"],
     components: {
     },
     props: {
       nit: {
-        type: Number,
+        type: Text,
         require: true,
       },
     },
 
     setup(props, { emit }) {
-      onMounted(() => {});
   
 
       const enviarActualizacionVista = () => {

@@ -156,8 +156,16 @@
   import axios from "axios";
   
   export default defineComponent({
+    name: "crearCliente",
+    emits: ["click"],
     components: {},
-    setup() {
+    props: {
+      nit: {
+        type: Text,
+        require: true,
+      },
+    },
+    setup(props, { emit }) {
       
   
       //Campos formulario
@@ -250,7 +258,7 @@
             )
             .then((res) => {
               console.log(res);
-              //formApp.value.reset();
+              crearClienteVista.value = false;
               resetearDatos();
               enviarActualizacionVista();
               formApp.value.resetValidation();

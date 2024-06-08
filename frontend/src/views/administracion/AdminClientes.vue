@@ -80,6 +80,7 @@ export default defineComponent({
             datos_cliente,
             datos_cabecera,
             search,
+            clientesRegistrados,
         };
     },
 });

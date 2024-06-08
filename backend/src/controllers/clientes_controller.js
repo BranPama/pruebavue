@@ -54,6 +54,8 @@ async function crearCliente(req = request, res = response) {
         res.status(201).json({
           msg: 'Se ha registrado un nuevo cliente en el sistema.'
         });
+      }else if(validarClienteSistema.rowCount == 1){
+        console.log('El usuario ya esta registrado')
       }
     } catch (error) {
       console.error(`Error en controller crearCliente ${error}`);
